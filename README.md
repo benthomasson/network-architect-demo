@@ -1,4 +1,5 @@
 
+
 # Install:
 
     pipenv install ansible
@@ -6,6 +7,11 @@
     ansible-galaxy install benthomasson.network_architect -p roles
     ansible-galaxy install benthomasson.vagrant_tools -p roles
     pip install -r roles/benthomasson.network_architect/requirements.txt
+
+
+# Design a Topology
+
+    https://network-architect-svg.com/#!/topology_id:80547dfb-75b0-4603-9bef-d1306b0b7f4c
 
 
 # Get a Topology
