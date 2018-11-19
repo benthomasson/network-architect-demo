@@ -1,3 +1,8 @@
 /roles
 *.retry
 /topology.yml
+/Vagrantfile
+/.vagrant
+/hosts
+/hosts2
+/ssh-config

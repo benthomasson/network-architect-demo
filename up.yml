@@ -1,0 +1,23 @@
+---
+- name: Create Topology Using Vagrant
+  hosts: localhost
+  gather_facts: false
+  roles:
+      - benthomasson.vagrant_tools
+      - benthomasson.network_architect
+  tasks:
+    - jinja:
+        template: templates/Vagrantfile.j2
+        context: topology.yml
+        output: Vagrantfile
+    - vagrant_up:
+    - vagrant_ssh_config:
+        output: ssh-config
+    - convert_ssh_config_to_ansible_inventory2:
+        data: topology.yml
+        ssh_config: ssh-config
+        output: hosts
+    - convert_ssh_config_to_ansible_inventory3:
+        data: topology.yml
+        ssh_config: ssh-config
+        output: hosts2
