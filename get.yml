@@ -1,0 +1,10 @@
+---
+- name: Get Topology
+  hosts: localhost
+  gather_facts: false
+  roles:
+    - benthomasson.network_architect
+  tasks:
+    - requests_get:
+        url: "https://network-architect-svg.com/network_ui/topology.yaml?topology_id={{topology_id}}"
+        output: "topology.yml"
