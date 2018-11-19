@@ -6,6 +6,14 @@ Vagrant.configure("2") do |config|
     config.vm.define "{{device.name}}" do |device|
         device.vm.hostname = "{{device.name}}"
         device.vm.box ="{%if device.type == "switch" or device.type == "router"%}higebu/vyos{%endif%}{%if device.type == "host"%}boxcutter/ubuntu1404{%endif%}"
+            {%for interface in device.interfaces-%}
+        {%-if interface.network %}
+        # {{device.name}} {{interface.name}} to {{interface.remote_device_name}} {{interface.remote_interface_name}}
+        device.vm.network "private_network",
+			 virtualbox__intnet: "network_{{interface.network}}",
+             auto_config: false
+        {%-endif%}
+        {%-endfor%}
     end # config.vm.define {{device.name}}
 
 {%endfor%}
